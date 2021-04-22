@@ -9,7 +9,6 @@ export default function SelectBar({
   list,
 }) {
   const regex = new RegExp(searchInput, "gi");
-  // const hasOptions =
   return (
     <div className="wrapper" ref={wrapper}>
       <div className="input-block">
