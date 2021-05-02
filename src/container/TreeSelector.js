@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const DropDown = styled.div`
+  height: 12rem;
+  position: absolute;
+  top: 3rem;
+  border: 1px solid darkgray;
+  width: 100%;
+  overflow-y: scroll;
   z-index: 1;
+  background: #fff;
 `;
 const fakeDataList = [
   {
@@ -35,7 +42,11 @@ export default function TreeSelector({
       >
         select...
       </div>
-      {isDropdownOpen && <DropDown className="dropdown">cuteLuna</DropDown>}
+      {isDropdownOpen && (
+        <DropDown className="dropdown">
+          <div></div>
+        </DropDown>
+      )}
     </div>
   );
 }
