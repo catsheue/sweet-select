@@ -1,6 +1,8 @@
 import "./App.css";
 import SelectBar from "./container/SelectBar";
 import { useSweetSelect } from "./hooks/useSweetSelect";
+import TreeSelector from "./container/TreeSelector";
+import { useSweetTree } from "./hooks/useSweetTree";
 
 const fakeList = [
   { name: "cuteLuna", id: 1 },
@@ -26,11 +28,15 @@ const fakeList = [
 ];
 function App() {
   const defaultSelect = useSweetSelect();
+  const defaultTree = useSweetTree();
   return (
     <div className="App">
       <header className="App-header">
         <h2 className="App-select-type">Default Select Bar</h2>
         <SelectBar {...defaultSelect} placeholder="test" list={fakeList} />
+
+        <h2 className="App-select-type">Tree Selector</h2>
+        <TreeSelector {...defaultTree} />
       </header>
     </div>
   );
