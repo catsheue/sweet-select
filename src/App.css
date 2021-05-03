@@ -10,6 +10,7 @@
 .App-select-type {
     font-size: 1rem;
     padding-bottom: 1rem;
+    padding-top: 3rem;
 }
 
 
@@ -68,8 +69,10 @@
     border: 1px solid darkgray;
     width: 100%;
     overflow-y: scroll;
-    background: #fff;
+
     z-index: 1;
+    background: #fff;
+
 }
 
 .list-item {
