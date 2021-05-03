@@ -32,7 +32,14 @@
     align-items: center;
     width: 1.5rem;
     z-index: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: gray;
 
+}
+.close-button:hover {
+    color: #000;
 }
 
 .input-block {
@@ -55,13 +62,14 @@
     color: lightgray;
  }
 .dropdown {
-    height: 12rem;
+    max-height: 12rem;
     position: absolute;
     top: 2.4rem;
-    /*background: pink;*/
     border: 1px solid darkgray;
     width: 100%;
     overflow-y: scroll;
+    background: #fff;
+    z-index: 1;
 }
 
 .list-item {
@@ -76,6 +84,9 @@
     color: #fff;
 }
 
-.list-item.no-options {
+.no-options {
     color: gray;
+    font-size: 0.8rem;
+    padding: .5rem;
+    line-height: 1;
 }

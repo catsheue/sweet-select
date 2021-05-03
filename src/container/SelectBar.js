@@ -20,14 +20,18 @@ export default function SelectBar({
           onClick={() => setIsDropdownOpen((prev) => !prev)}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <div className="close-button" onClick={(e) => handleClearValue(e)}>
+        <button
+          type="button"
+          className="close-button"
+          onClick={(e) => handleClearValue(e)}
+        >
           x
-        </div>
+        </button>
       </div>
       {isDropdownOpen && (
         <div className="dropdown">
           {list.map(({ name }, index) => {
-            if (searchInput === "")
+            if (searchInput === "") {
               return (
                 <div
                   key={index}
@@ -41,7 +45,8 @@ export default function SelectBar({
                   {name}
                 </div>
               );
-            const regex = new RegExp(searchInput, "gi");
+            }
+
             if (regex.test(name)) {
               return (
                 <div
@@ -57,9 +62,10 @@ export default function SelectBar({
                 </div>
               );
             }
+            return null;
           })}
-          {!!!list.some(({ name }) => regex.test(name)) && (
-            <div className="list-item no-options">No options</div>
+          {!list.some(({ name }) => regex.test(name)) && (
+            <div className="no-options">No options</div>
           )}
         </div>
       )}

@@ -31,6 +31,7 @@ function App() {
       <header className="App-header">
         <h2 className="App-select-type">Default Select Bar</h2>
         <SelectBar {...defaultSelect} placeholder="test" list={fakeList} />
+        <h2 className="App-select-type">Short Select - no search</h2>
       </header>
     </div>
   );
