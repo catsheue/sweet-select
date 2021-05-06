@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useClickOutside } from "./useClickOutside";
 
 export function useSweetTree() {
@@ -9,7 +9,7 @@ export function useSweetTree() {
   const closeCallback = useCallback(() => setIsDropdownOpen(false), []);
   useClickOutside(wrapper, closeCallback);
 
-  useState(() => {
+  useEffect(() => {
     const listLength = 10;
     if (selectedItems.length === listLength) {
       setSelectedAll(true);
