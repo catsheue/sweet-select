@@ -5,6 +5,8 @@ import TreeSelector from "./container/TreeSelector";
 import { useSweetTree } from "./hooks/useSweetTree";
 import { useSweetShort } from "./hooks/useSweetShort";
 import ShortSelectBar from "./container/ShortSelectBar";
+import { treeConfig } from "./config/treeConfig";
+import styled from "styled-components";
 
 const fakeList = [
   { name: "cuteLuna", id: 1 },
@@ -33,21 +35,25 @@ const shortList = [
   { name: "cuteLuna", id: 1 },
   { name: "abc", id: 2 },
 ];
+
+const ContentWrapper = styled.div`
+  width: 15rem;
+`;
+
 function App() {
   const defaultSelect = useSweetSelect();
   const defaultTree = useSweetTree();
   const defaultShort = useSweetShort();
   return (
     <div className="App">
-      <header className="App-header">
+      <ContentWrapper>
         <h2 className="App-select-type">Default Select Bar</h2>
         <SelectBar {...defaultSelect} placeholder="test" list={fakeList} />
         <h2 className="App-select-type">Default Short</h2>
         <ShortSelectBar {...defaultShort} list={shortList} />
-
         <h2 className="App-select-type">Tree Selector</h2>
-        <TreeSelector {...defaultTree} />
-      </header>
+        <TreeSelector {...defaultTree} list={treeConfig} />
+      </ContentWrapper>
     </div>
   );
 }
