@@ -58,7 +58,7 @@ export default function ChildMenu({
         <MenuNameCheckLabel>
           <input
             type="checkbox"
-            checked={hasAllSub(item)}
+            checked={!!hasAllSub(item)}
             onChange={() => selectChildMenu(item)}
           />
           <span className="text">{item.Name}</span>

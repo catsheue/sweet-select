@@ -44,9 +44,17 @@ export function useSweetTree({
     if (targetObj) {
       const newArr = JSON.parse(JSON.stringify(selectedItems));
       newArr[indexOfWhiteLabel] = item;
+
+      // if (targetObj.Subsidiaries.length === item.Subsidiaries.length) {
+      //   setSelectedItems(arr.filter((ele) => ele.Name !== item.Name));
+      // } else {
+      //   setSelectedItems(newArr);
+      // }
+
       targetObj.Subsidiaries.length === item.Subsidiaries.length
-        ? setSelectedItems(arr.filter((item) => item.Name !== item.Name))
+        ? setSelectedItems(arr.filter((ele) => ele.Name !== item.Name))
         : setSelectedItems(newArr);
+
       // 1. if has select all and child, remove this whiteLabel
       // 2. false, add all in this whiteLabel (from this index)
     } else {
