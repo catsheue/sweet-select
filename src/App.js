@@ -1,7 +1,7 @@
 import "./App.css";
 import SelectBar from "./container/SelectBar";
 import { useSweetSelect } from "./hooks/useSweetSelect";
-import TreeSelector from "./container/TreeSelector";
+import TreeSelector from "./container/tree/TreeSelector";
 import { useSweetTree } from "./hooks/useSweetTree";
 import { useSweetShort } from "./hooks/useSweetShort";
 import ShortSelectBar from "./container/ShortSelectBar";
@@ -42,7 +42,7 @@ const ContentWrapper = styled.div`
 
 function App() {
   const defaultSelect = useSweetSelect();
-  const defaultTree = useSweetTree();
+  const defaultTree = useSweetTree({ list: treeConfig });
   const defaultShort = useSweetShort();
   return (
     <div className="App">
@@ -52,7 +52,7 @@ function App() {
         <h2 className="App-select-type">Default Short</h2>
         <ShortSelectBar {...defaultShort} list={shortList} />
         <h2 className="App-select-type">Tree Selector</h2>
-        <TreeSelector {...defaultTree} list={treeConfig} />
+        <TreeSelector {...defaultTree} />
       </ContentWrapper>
     </div>
   );

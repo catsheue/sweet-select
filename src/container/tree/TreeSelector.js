@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import ChildMenu from "./ChildMenu";
 
 const SelectWrapper = styled.div`
   cursor: pointer;
@@ -35,6 +36,12 @@ const DropDown = styled.div`
   overflow-y: scroll;
   z-index: 1;
   background: #fff;
+
+  max-height: 12rem;
+`;
+
+const DropdownItem = styled.div`
+  display: flex;
 `;
 const Triangle = styled.div`
   transform: ${(props) => (props.isDropdownOpen ? "rotate(180deg)" : "none")};
@@ -46,21 +53,54 @@ const Triangle = styled.div`
   border-right: 7px solid transparent;
   border-top: 7px solid #1c3d5f;
 `;
+const CheckAllLabel = styled.label`
+  width: 100%;
+`;
 export default function TreeSelector({
   isDropdownOpen,
   setIsDropdownOpen,
   wrapper,
+  checkAllSelected,
+  toggleSelectAll,
+  list,
+  selectedItems,
+  hasAllSub,
+  handleSelectSub,
+  hasSub,
+  selectChildMenu,
 }) {
   return (
     <SelectWrapper ref={wrapper}>
       <TopTextBlock onClick={() => setIsDropdownOpen((prev) => !prev)}>
         <TopText>texdddddddddddddddddddddddddddddddddddt</TopText>
-
         <Triangle isDropdownOpen={isDropdownOpen} />
       </TopTextBlock>
       {isDropdownOpen && (
-        <DropDown className="dropdown">
-          <div></div>
+        <DropDown>
+          <DropdownItem className="newdropdown__item">
+            <CheckAllLabel className="checkbox">
+              <input
+                type="checkbox"
+                checked={!!checkAllSelected()}
+                onChange={toggleSelectAll}
+              />
+              <i className="icon icon-checkbox" />
+              <span className="text">All</span>
+            </CheckAllLabel>
+          </DropdownItem>
+          {list.map((item, index) => {
+            return (
+              <ChildMenu
+                hasSub={hasSub}
+                hasAllSub={hasAllSub}
+                handleSelectSub={handleSelectSub}
+                key={index}
+                item={item}
+                selectedItems={selectedItems}
+                selectChildMenu={selectChildMenu}
+              />
+            );
+          })}
         </DropDown>
       )}
     </SelectWrapper>
